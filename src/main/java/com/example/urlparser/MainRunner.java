@@ -9,18 +9,15 @@ import java.util.List;
 
 public class MainRunner {
 
-    private static final String EXCEL_PATH = "C:\\Users\\Dmitrii\\Downloads\\test_amazon_urls_final.xlsx";
-    private static final String OUTPUT_DIR = "C:\\Users\\Dmitrii\\Downloads\\inf_sellers";
-
     public static void main(String[] args) {
 
-        List<UrlBrandPair> urlBrandPairs = ExcelReader.readExcel(EXCEL_PATH);
+        List<UrlBrandPair> urlBrandPairs = ExcelReader.readExcel(Config.EXCEL_PATH);
         if (urlBrandPairs.isEmpty()) {
             System.err.println("Excel is empty or not found. Execution stopped.");
             return;
         }
 
-        File outputRoot = new File(OUTPUT_DIR);
+        File outputRoot = new File(Config.OUTPUT_DIR);
         if (!outputRoot.exists()) {
             outputRoot.mkdirs();
         }
@@ -31,9 +28,9 @@ public class MainRunner {
             try {
                 System.out.println("Processing: " + pair.getUrl());
 
-                PageCapturer.capturePage(driver, pair.getUrl(), pair.getBrand(), OUTPUT_DIR);
+                PageCapturer.capturePage(driver, pair.getUrl(), pair.getBrand(), Config.OUTPUT_DIR);
 
-                File brandFolder = new File(OUTPUT_DIR + File.separator + pair.getBrand());
+                File brandFolder = new File(Config.OUTPUT_DIR + File.separator + pair.getBrand());
                 File[] pngFiles = brandFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".png"));
 
                 if (pngFiles != null && pngFiles.length > 0) {
@@ -61,6 +58,6 @@ public class MainRunner {
 
         BrowserManager.stopBrowser(driver);
 
-        System.out.println("All done! Files saved in " + OUTPUT_DIR);
+        System.out.println("All done! Files saved in " + Config.OUTPUT_DIR);
     }
 }
