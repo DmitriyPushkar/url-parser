@@ -34,17 +34,12 @@ Useful for evidence collection, content monitoring, reporting, or archiving larg
 
 ### Option 1: Using the Prebuilt JAR (recommended)
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-org/web-page-screenshot-archiver.git
-   cd web-page-screenshot-archiver
-   ```
+1. [Download the latest `.jar` file here](https://github.com/DmitriyPushkar/url-parser/releases/tag/v1.0.0)
 
 2. Run the application:
 
    ```bash
-   java -jar target/amazon-automation-screenshots-1.0-SNAPSHOT.jar
+   java -jar amazon-automation-screenshots-1.0-SNAPSHOT.jar
    ```
 
 3. Open in your browser:
@@ -52,6 +47,8 @@ Useful for evidence collection, content monitoring, reporting, or archiving larg
    ```
    http://localhost:8080
    ```
+
+4. Upload your `.xlsx` file, set output folder, select columns, and click **Start Processing**.
 
 ---
 
